@@ -49,7 +49,7 @@
             @(NSLayoutAttributeLastBaseline) : @"lastBaseline",
 #endif
             
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
             @(NSLayoutAttributeLeftMargin)           : @"leftMargin",
             @(NSLayoutAttributeRightMargin)          : @"rightMargin",
             @(NSLayoutAttributeTopMargin)            : @"topMargin",
@@ -98,8 +98,8 @@
 #pragma mark - description override
 
 + (NSString *)descriptionForObject:(id)obj {
-    if ([obj respondsToSelector:@selector(mas_key)] && [obj mas_key]) {
-        return [NSString stringWithFormat:@"%@:%@", [obj class], [obj mas_key]];
+    if ([obj respondsToSelector:@selector(mas__key)] && [obj mas__key]) {
+        return [NSString stringWithFormat:@"%@:%@", [obj class], [obj mas__key]];
     }
     return [NSString stringWithFormat:@"%@:%p", [obj class], obj];
 }
